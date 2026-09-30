@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaludVital - Consultorio de Medicina General</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        clinic: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Sombra y difuminado de transición del Slider hacia el fondo */
+        .hero-gradient-overlay {
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(240,253,250,0.7) 60%, rgba(240,253,250,1) 100%);
+        }
+
+        /* Transición personalizada para el Menú Lateral Móvil (Drawer) */
+        .mobile-drawer {
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-drawer-overlay {
+            transition: opacity 0.35s ease;
+        }
+
+        /* Transición suave para las diapositivas del carrusel */
+        .slide-fade {
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        /* Scrollbar estilizado para la vista de menú */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0d9488;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-clinic-50 text-slate-800 font-sans antialiased selection:bg-clinic-500 selection:text-white">
+
+    <!-- ==========================================
+         BARRA DE NAVEGACIÓN SUPERIOR (STICKY NAVBAR)
+         ========================================== -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-teal-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Botón de Menú Móvil (Hamburguesa) - Visible en celular -->
+                <div class="flex items-center lg:hidden">
+                    <button id="openDrawerBtn" aria-label="Abrir Menú" class="p-2.5 rounded-xl text-clinic-700 hover:bg-clinic-50 focus:outline-none focus:ring-2 focus:ring-clinic-500">
+                        <i class="fa-solid fa-bars-staggered text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Logo & Nombre del Consultorio -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-clinic-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-clinic-500/20">
+                        <i class="fa-solid fa-user-doctor text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold text-slate-900 tracking-tight block">Salud<span class="text-clinic-600">Vital</span></span>
+                        <span class="text-[10px] font-semibold text-clinic-700 tracking-wider uppercase block -mt-1">Medicina General</span>
+                    </div>
+                </div>
+
+                <!-- Menú de Navegación para Laptop / Desktop -->
+                <nav class="hidden lg:flex items-center space-x-1">
+                    <a href="#inicio" class="px-4 py-2 rounded-lg text-sm font-semibold text-clinic-700 bg-clinic-50 hover:bg-clinic-100 transition">Inicio</a>
+                    <a href="#nosotros" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-clinic-700 hover:bg-slate-50 transition">Nosotros</a>
+                    <a href="#servicios" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-clinic-700 hover:bg-slate-50 transition">Servicios</a>
+                    <a href="#contacto" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-clinic-700 hover:bg-slate-50 transition">Contacto</a>
+                </nav>
+
+                <!-- Botón Agendar Cita (Desktop) -->
+                <div class="hidden lg:flex items-center">
+                    <a href="#contacto" class="inline-flex items-center gap-2 bg-clinic-600 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-clinic-600/30 hover:bg-clinic-700 transition active:scale-95">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Agendar Cita</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ==========================================
+         MENÚ LATERAL MÓVIL (DRAWER DE TRANSICIÓN)
+         Según diseño del dibujo (Boton X, Menú, Enlaces)
+         ========================================== -->
+    <div id="drawerOverlay" class="mobile-drawer-overlay fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 pointer-events-none opacity-0 lg:hidden" onclick="closeMobileDrawer()"></div>
+
+    <aside id="mobileDrawer" class="mobile-drawer fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl flex flex-col justify-between -translate-x-full lg:hidden border-r border-teal-100">
+        
+        <!-- Encabezado del Menú Lateral -->
+        <div class="p-6 border-b border-slate-100 bg-clinic-50/50">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <button id="closeDrawerBtn" aria-label="Cerrar Menú" class="p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 transition">
+                        <i class="fa-solid fa-xmark text-2xl"></i>
+                    </button>
+                    <span class="text-xl font-bold text-slate-800">Menú</span>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-clinic-100 text-clinic-700 flex items-center justify-center font-bold text-xs">
+                    SV
+                </div>
+            </div>
+        </div>
+
+        <!-- Enlaces del Menú -->
+        <div class="p-6 space-y-2 overflow-y-auto flex-1">
+            <a href="#inicio" onclick="closeMobileDrawer()" class="flex items-center justify-between p-3.5 rounded-xl text-clinic-700 bg-clinic-50 font-bold hover:bg-clinic-100 transition">
+                <span class="flex items-center gap-3"><i class="fa-solid fa-house text-clinic-600"></i> Inicio</span>
+                <i class="fa-solid fa-chevron-right text-xs text-clinic-400"></i>
+            </a>
+            <a href="#nosotros" onclick="closeMobileDrawer()" class="flex items-center justify-between p-3.5 rounded-xl text-slate-700 font-semibold hover:bg-slate-50 transition">
+                <span class="flex items-center gap-3"><i class="fa-solid fa-user-group text-slate-400"></i> Nosotros</span>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+            </a>
+            <a href="#servicios" onclick="closeMobileDrawer()" class="flex items-center justify-between p-3.5 rounded-xl text-slate-700 font-semibold hover:bg-slate-50 transition">
+                <span class="flex items-center gap-3"><i class="fa-solid fa-stethoscopes text-slate-400"></i> Servicios</span>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+            </a>
+            <a href="#contacto" onclick="closeMobileDrawer()" class="flex items-center justify-between p-3.5 rounded-xl text-slate-700 font-semibold hover:bg-slate-50 transition">
+                <span class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-slate-400"></i> Contacto</span>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-300"></i>
+            </a>
+
+            <div class="pt-6 mt-6 border-t border-slate-100 space-y-3">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400 px-3">Atención Inmediata</p>
+                <a href="tel:+525551234567" class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600">
+                    <i class="fa-solid fa-phone text-clinic-600"></i> +52 (55) 5123-4567
+                </a>
+                <a href="mailto:contacto@saludvital.com" class="flex items-center gap-3 px-3 py-2 text-sm text-slate-600">
+                    <i class="fa-solid fa-envelope text-clinic-600"></i> contacto@saludvital.com
+                </a>
+            </div>
+        </div>
+
+        <!-- Parte Inferior del Menú -->
+        <div class="p-6 border-t border-slate-100 bg-slate-50">
+            <a href="#contacto" onclick="closeMobileDrawer()" class="w-full py-3 px-4 bg-clinic-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-clinic-600/20 active:scale-98 transition">
+                <i class="fa-solid fa-calendar-plus"></i>
+                <span>Agendar Consulta</span>
+            </a>
+        </div>
+    </aside>
+
+
+    <!-- ==========================================
+         CARRUSEL / SLIDER PRINCIPAL CON DIFUMINADO
+         ========================================== -->
+    <section id="inicio" class="relative overflow-hidden bg-slate-900 pt-4">
+        
+        <!-- Contenedor del Carrusel -->
+        <div class="relative w-full h-[380px] sm:h-[450px] md:h-[550px] lg:h-[600px] max-w-7xl mx-auto">
+            
+            <!-- Slide 1 -->
+            <div class="slide-item absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80" alt="Consultorio General" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent"></div>
+                <div class="absolute bottom-16 sm:bottom-24 left-0 right-0 px-6 max-w-3xl mx-auto text-center text-white">
+                    <span class="bg-clinic-500/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Atención Profesional</span>
+                    <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-md">Tu Salud en Manos Especializadas</h1>
+                    <p class="mt-2 text-sm sm:text-base text-slate-200 line-clamp-2 max-w-xl mx-auto">Diagnóstico certero, trato humano y seguimiento médico personalizado.</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide-item absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80" alt="Atención Médica" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent"></div>
+                <div class="absolute bottom-16 sm:bottom-24 left-0 right-0 px-6 max-w-3xl mx-auto text-center text-white">
+                    <span class="bg-clinic-500/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Equipamiento Moderno</span>
+                    <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-md">Chequeos Médicos Integrales</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-200 line-clamp-2 max-w-xl mx-auto">Prevención y control para ti y toda tu familia con los mejores estándares.</p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide-item absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1600&q=80" alt="Consulta Médica" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent"></div>
+                <div class="absolute bottom-16 sm:bottom-24 left-0 right-0 px-6 max-w-3xl mx-auto text-center text-white">
+                    <span class="bg-clinic-500/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Calidez y Confianza</span>
+                    <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-md">Cuidamos de los tuyos</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-200 line-clamp-2 max-w-xl mx-auto">Consultas presenciales en un ambiente cómodo, seguro y accesible.</p>
+                </div>
+            </div>
+
+            <!-- Flecha Izquierda (<) -->
+            <button id="prevBtn" aria-label="Anterior Imagen" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md text-white flex items-center justify-center transition border border-white/30 focus:outline-none active:scale-90 z-20">
+                <i class="fa-solid fa-chevron-left text-lg sm:text-xl"></i>
+            </button>
+
+            <!-- Flecha Derecha (>) -->
+            <button id="nextBtn" aria-label="Siguiente Imagen" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md text-white flex items-center justify-center transition border border-white/30 focus:outline-none active:scale-90 z-20">
+                <i class="fa-solid fa-chevron-right text-lg sm:text-xl"></i>
+            </button>
+
+            <!-- Indicadores (Puntos) -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                <button class="dot-btn w-3 h-3 rounded-full bg-white transition-all duration-300 w-8"></button>
+                <button class="dot-btn w-3 h-3 rounded-full bg-white/50 transition-all duration-300"></button>
+                <button class="dot-btn w-3 h-3 rounded-full bg-white/50 transition-all duration-300"></button>
+            </div>
+
+        </div>
+
+        <!-- TRANSICIÓN / DIFUMINADO INFERIOR TRANSPARENTE HACIA EL COLOR DE ABAJO -->
+        <div class="hero-gradient-overlay absolute bottom-0 left-0 right-0 h-28 sm:h-36 pointer-events-none z-10"></div>
+    </section>
+
+
+    <!-- ==========================================
+         TARJETAS PRINCIPALES DE BENEFICIOS
+         ========================================== -->
+    <section class="relative z-20 -mt-10 sm:-mt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+            
+            <div class="bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/60 border border-teal-100/80 hover:-translate-y-1 transition duration-300">
+                <div class="w-12 h-12 rounded-xl bg-clinic-100 text-clinic-600 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-stethoscope"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800">Consulta General</h3>
+                <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                    Evaluaciones físicas completas, diagnóstico de síntomas, ordenamiento de exámenes clínicos y tratamiento de enfermedades agudas.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/60 border border-teal-100/80 hover:-translate-y-1 transition duration-300">
+                <div class="w-12 h-12 rounded-xl bg-clinic-100 text-clinic-600 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800">Control y Prevención</h3>
+                <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                    Seguimiento continuo de hipertensión, diabetes y chequeos preventivos periódicos para mantener tu salud óptima.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/60 border border-teal-100/80 hover:-translate-y-1 transition duration-300">
+                <div class="w-12 h-12 rounded-xl bg-clinic-100 text-clinic-600 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-user-nurse"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800">Atención Humana</h3>
+                <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                    Espacio de confianza y calidez donde escuchamos a cada paciente con la paciencia y dedicación que se merece.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         SECCIÓN DE REDES SOCIALES (REUBICADA SEGÚN IMAGEN)
+         ========================================== -->
+    <section class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-teal-100 shadow-sm max-w-2xl mx-auto">
+            <p class="text-xs font-bold text-clinic-600 uppercase tracking-widest mb-3">Síguenos en nuestras redes</p>
+            <div class="flex items-center justify-center gap-4">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-12 h-12 rounded-full bg-clinic-50 border border-clinic-200 text-clinic-700 flex items-center justify-center text-xl hover:bg-clinic-600 hover:text-white hover:border-clinic-600 transition duration-300 shadow-sm hover:shadow-md">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-12 h-12 rounded-full bg-clinic-50 border border-clinic-200 text-clinic-700 flex items-center justify-center text-xl hover:bg-clinic-600 hover:text-white hover:border-clinic-600 transition duration-300 shadow-sm hover:shadow-md">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/525551234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-12 h-12 rounded-full bg-clinic-50 border border-clinic-200 text-clinic-700 flex items-center justify-center text-xl hover:bg-clinic-600 hover:text-white hover:border-clinic-600 transition duration-300 shadow-sm hover:shadow-md">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="w-12 h-12 rounded-full bg-clinic-50 border border-clinic-200 text-clinic-700 flex items-center justify-center text-xl hover:bg-clinic-600 hover:text-white hover:border-clinic-600 transition duration-300 shadow-sm hover:shadow-md">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         SECCIÓN NOSOTROS Y SERVICIOS
+         ========================================== -->
+    <section id="servicios" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Lista de Servicios -->
+            <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm">
+                <span class="text-xs font-bold text-clinic-600 uppercase tracking-widest">Atención Especializada</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-6">Nuestros Servicios Médicos</h2>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-clinic-50/50 transition">
+                        <i class="fa-solid fa-circle-check text-clinic-500 text-lg mt-0.5"></i>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Consulta médica general</h4>
+                            <p class="text-slate-600 text-sm">Adultos y niños desde los 5 años.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-clinic-50/50 transition">
+                        <i class="fa-solid fa-circle-check text-clinic-500 text-lg mt-0.5"></i>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Certificados médicos</h4>
+                            <p class="text-slate-600 text-sm">Para actividades escolares, laborales o deportivas.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-clinic-50/50 transition">
+                        <i class="fa-solid fa-circle-check text-clinic-500 text-lg mt-0.5"></i>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Toma de signos vitales</h4>
+                            <p class="text-slate-600 text-sm">Presión arterial, glucemia capilar y oximetría.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-clinic-50/50 transition">
+                        <i class="fa-solid fa-circle-check text-clinic-500 text-lg mt-0.5"></i>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Curaciones y suturas menores</h4>
+                            <p class="text-slate-600 text-sm">Tratamiento de heridas leves y retiro de puntos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horarios y Urgencias -->
+            <div id="nosotros" class="lg:col-span-5 space-y-6">
+                
+                <div class="bg-clinic-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-clinic-600/20">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-regular fa-clock text-2xl"></i>
+                        <h3 class="text-xl font-bold">Horarios de Atención</h3>
+                    </div>
+                    <p class="text-clinic-100 text-sm mb-6">Disponibles para tu salud en los siguientes turnos:</p>
+                    
+                    <div class="space-y-3 border-t border-clinic-500/50 pt-4 text-sm">
+                        <div class="flex justify-between font-medium">
+                            <span class="text-clinic-100">Lunes a Viernes:</span>
+                            <span class="font-bold">8:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="flex justify-between font-medium">
+                            <span class="text-clinic-100">Sábados:</span>
+                            <span class="font-bold">9:00 AM - 2:00 PM</span>
+                        </div>
+                        <div class="flex justify-between font-medium">
+                            <span class="text-clinic-100">Domingos:</span>
+                            <span class="font-bold text-teal-200">Cerrado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-truck-medical"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">¿Requieres atención urgente?</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Llámanos directo para coordinar tu llegada.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         FOOTER / PIE DE PÁGINA (DATOS SOLICITADOS)
+         ========================================== -->
+    <footer id="contacto" class="bg-slate-900 text-white mt-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Columna 1: Info Marca -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-clinic-500 flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight">Salud<span class="text-clinic-500">Vital</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Consultorio de Medicina General enfocado en brindar una atención oportuna, accesible y de alta calidad para toda la comunidad.
+                    </p>
+                </div>
+
+                <!-- Columna 2: Datos de Contacto Obligatorios -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-clinic-400">Información de Contacto</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone text-clinic-500 mt-1"></i>
+                            <div>
+                                <strong class="block text-white">Teléfono:</strong>
+                                <a href="tel:+525551234567" class="hover:text-clinic-400 transition">+52 (55) 5123-4567</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-clinic-500 mt-1"></i>
+                            <div>
+                                <strong class="block text-white">Dirección:</strong>
+                                <span>Av. Revolución #450, Col. Centro, Ciudad de México</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-envelope text-clinic-500 mt-1"></i>
+                            <div>
+                                <strong class="block text-white">Correo Electrónico:</strong>
+                                <a href="mailto:contacto@saludvital.com" class="hover:text-clinic-400 transition">contacto@saludvital.com</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Navegación Rápida -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-clinic-400">Navegación</h3>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><a href="#inicio" class="hover:text-clinic-400 transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-xs text-clinic-500"></i> Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-clinic-400 transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-xs text-clinic-500"></i> Nosotros</a></li>
+                        <li><a href="#servicios" class="hover:text-clinic-400 transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-xs text-clinic-500"></i> Servicios</a></li>
+                        <li><a href="#contacto" class="hover:text-clinic-400 transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-xs text-clinic-500"></i> Agendar Cita</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Redes Sociales -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-clinic-400">Síguenos en Redes</h3>
+                    <p class="text-xs text-slate-400">Mantente informado sobre nuestros consejos de salud y novedades.</p>
+                    <div class="flex gap-3 pt-2">
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-slate-800 text-slate-300 hover:bg-clinic-600 hover:text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-slate-800 text-slate-300 hover:bg-clinic-600 hover:text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/525551234567" target="_blank" aria-label="WhatsApp" class="w-9 h-9 rounded-lg bg-slate-800 text-slate-300 hover:bg-clinic-600 hover:text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-800 mt-12 pt-6 text-center text-xs text-slate-500">
+                <p>&copy; 2026 SaludVital Consultorio Médico. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ==========================================
+         JAVASCRIPT CÓDIGO INTERACTIVO
+         ========================================== -->
+    <script>
+        // --- LÓGICA DEL CARRUSEL DE IMÁGENES ---
+        const slides = document.querySelectorAll('.slide-item');
+        const dots = document.querySelectorAll('.dot-btn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0');
+                    slide.classList.add('opacity-100');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('bg-white', 'w-8');
+                    dot.classList.remove('bg-white/50');
+                } else {
+                    dot.classList.remove('bg-white', 'w-8');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function prevSlide() {
+            let prev = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prev);
+        }
+
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(slideInterval);
+        }
+
+        // Eventos Carrusel
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                stopAutoSlide();
+                startAutoSlide();
+            });
+        });
+
+        startAutoSlide();
+
+
+        // --- LÓGICA DEL MENÚ LATERAL MÓVIL (DRAWER) ---
+        const openDrawerBtn = document.getElementById('openDrawerBtn');
+        const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const drawerOverlay = document.getElementById('drawerOverlay');
+
+        function openMobileDrawer() {
+            mobileDrawer.classList.remove('-translate-x-full');
+            drawerOverlay.classList.remove('pointer-events-none', 'opacity-0');
+            drawerOverlay.classList.add('opacity-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileDrawer() {
+            mobileDrawer.classList.add('-translate-x-full');
+            drawerOverlay.classList.remove('opacity-100');
+            drawerOverlay.classList.add('pointer-events-none', 'opacity-0');
+            document.body.style.overflow = '';
+        }
+
+        openDrawerBtn.addEventListener('click', openMobileDrawer);
+        closeDrawerBtn.addEventListener('click', closeMobileDrawer);
+    </script>
+</body>
+</html>
