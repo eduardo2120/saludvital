@@ -41,6 +41,7 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* HEADER & STICKY NAV */
@@ -173,7 +174,7 @@
             margin: 0 auto;
         }
 
-        /* SECCIÓN 2: MISIÓN, SONRISAS, VISIÓN Y VALORES CON MASCOTA IA */
+        /* SECCIÓN 2: PILARES */
         .section-pillars {
             max-width: 1200px;
             margin: 2rem auto 4rem auto;
@@ -438,7 +439,9 @@
             color: var(--white);
         }
 
-        /* SECCIÓN 4: ORGANIGRAMA ADAPTATIVO Y MOVIMIENTO FLUIDO */
+        /* ==================================================== */
+        /* SECCIÓN 4: ORGANIGRAMA INTELIGENTE */
+        /* ==================================================== */
         .section-organigrama {
             width: 100%;
             max-width: 1300px;
@@ -454,27 +457,11 @@
             margin-bottom: 2.5rem;
         }
 
-        /* Contenedor adaptativo con scroll horizontal nativo y suave fluido */
-        .org-scroll-wrapper {
-            width: 100%;
+        /* --- VISTA ESCRITORIO / TABLET (Árbol horizontal amplio tradicional) --- */
+        .desktop-org {
+            display: block;
             overflow-x: auto;
-            padding-bottom: 1.5rem;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) #e2e8f0;
-        }
-
-        .org-scroll-wrapper::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .org-scroll-wrapper::-webkit-scrollbar-track {
-            background: #e2e8f0;
-            border-radius: 10px;
-        }
-
-        .org-scroll-wrapper::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
+            padding: 20px;
         }
 
         .tree-container {
@@ -486,7 +473,6 @@
         .tree-container ul {
             padding-top: 20px;
             position: relative;
-            transition: all 0.5s;
             display: flex;
             justify-content: center;
             list-style-type: none;
@@ -497,7 +483,6 @@
             list-style-type: none;
             position: relative;
             padding: 20px 8px 0 8px;
-            transition: all 0.5s;
         }
 
         .tree-container li::before, .tree-container li::after {
@@ -547,6 +532,7 @@
             height: 20px;
         }
 
+        /* Tarjeta de Nodo (Común para ambas vistas) */
         .node-card {
             background: var(--white);
             border: 2px solid #94a3b8;
@@ -592,13 +578,7 @@
             object-fit: cover;
             border-radius: 50%;
             border: 3px solid var(--primary-light);
-            transition: transform 0.3s, border-color 0.3s;
             background: #f1f5f9;
-        }
-
-        .node-photo-wrapper:hover img {
-            transform: scale(1.08);
-            border-color: var(--accent);
         }
 
         .email-tooltip-card {
@@ -676,19 +656,75 @@
             font-size: 0.75rem;
             font-weight: 700;
             display: inline-block;
-            line-height: 1.2;
         }
 
-        .node-card.main-leader .node-puesto-badge {
-            font-size: 0.8rem;
-            padding: 0.3rem 0.75rem;
+        /* --- VISTA MÓVIL (Cuadrícula de 2 columnas en vertical hacia abajo) --- */
+        .mobile-org {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-org {
+                display: none; /* Se oculta el árbol horizontal amplio en celulares */
+            }
+            .mobile-org {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.25rem;
+                padding: 0 0.5rem;
+            }
+            .mobile-org .main-leader-wrapper {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+            }
+            .mobile-org .node-card.main-leader {
+                width: 100%;
+                max-width: 320px;
+            }
+            .mobile-org .org-grid-2col {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.85rem;
+                width: 100%;
+            }
+            .mobile-org .node-card {
+                width: 100%;
+                max-width: none;
+                padding: 0.75rem 0.5rem;
+            }
+            .mobile-org .node-name {
+                font-size: 0.75rem;
+            }
+            .mobile-org .node-puesto-badge {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.4rem;
+            }
+            .mobile-org .node-photo-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+            .mobile-org .email-tooltip-card {
+                left: 50%;
+                bottom: 105%;
+                top: auto;
+                transform: translateX(-50%) translateY(-5px);
+            }
+            .mobile-org .email-tooltip-card::before {
+                display: none;
+            }
+            .mobile-org .node-photo-wrapper:hover .email-tooltip-card {
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
         /* FOOTER */
         .site-footer {
             background: #0f172a;
             color: var(--white);
-            padding: 3rem 0 2rem 0;
+            padding: 3rem 0 2.5rem 0;
             border-top: 1px solid #1e293b;
         }
 
@@ -718,9 +754,6 @@
             .story-image-box {
                 height: 220px;
             }
-            .story-badge-year {
-                font-size: 1.8rem;
-            }
         }
     </style>
 </head>
@@ -729,7 +762,7 @@
     <!-- NAV BAR -->
     <header class="header-sticky">
         <div class="nav-container">
-            <a href="index.html" class="brand-logo" aria-label="Volver a Inicio de SaludVital">
+            <a href="index.html" class="brand-logo" aria-label="Volver a Inicio">
                 <div class="brand-icon"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></div>
                 <div>
                     <span class="brand-title">Salud<span>Vital</span></span>
@@ -763,7 +796,7 @@
         </p>
     </section>
 
-    <!-- SECCIÓN 2: MISIÓN, SONRISAS, VISIÓN Y VALORES (+ MASCOTA IA) -->
+    <!-- SECCIÓN 2: MISIÓN, VISIÓN Y VALORES -->
     <section class="section-pillars" aria-label="Misión, Visión y Valores">
         <div class="pillars-grid">
             
@@ -804,22 +837,20 @@
 
     <!-- SECCIÓN 3: HISTORIA -->
     <section class="story-viewport-section" aria-label="Nuestra Historia">
-        
         <div class="story-header">
             <h2>Nuestra Historia</h2>
         </div>
 
         <div class="story-horizontal-track" id="storyTrack">
-            
             <div class="story-step">
                 <div class="story-content-grid">
                     <div class="story-image-box">
-                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=75" alt="Fundación del consultorio 1995" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=75" alt="Fundación 1995" loading="lazy">
                     </div>
                     <div class="story-info">
                         <span class="story-badge-year">1995 - 1996</span>
                         <h3>Los Primeros Pasos</h3>
-                        <p>Iniciamos operaciones como un pequeño consultorio local con la visión de acercar la medicina preventiva a todas las familias de la zona. Con un equipo de dos médicos dedicados, colocamos los cimientos de la confianza.</p>
+                        <p>Iniciamos operaciones como un pequeño consultorio local con la visión de acercar la medicina preventiva a todas las familias de la zona.</p>
                     </div>
                 </div>
             </div>
@@ -827,12 +858,12 @@
             <div class="story-step">
                 <div class="story-content-grid">
                     <div class="story-image-box">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=75" alt="Modernización del consultorio" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=75" alt="Modernización" loading="lazy">
                     </div>
                     <div class="story-info">
                         <span class="story-badge-year">2010 - 2015</span>
                         <h3>Expansión e Instalaciones</h3>
-                        <p>Ampliamos nuestras instalaciones integrando equipos diagnósticos de última generación y habilitando áreas dedicadas para chequeos preventivos y curaciones rápidas.</p>
+                        <p>Ampliamos nuestras instalaciones integrando equipos diagnósticos de última generación y áreas dedicadas para chequeos preventivos.</p>
                     </div>
                 </div>
             </div>
@@ -840,42 +871,40 @@
             <div class="story-step">
                 <div class="story-content-grid">
                     <div class="story-image-box">
-                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=75" alt="Atención médica moderna" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=75" alt="Actualidad" loading="lazy">
                     </div>
                     <div class="story-info">
                         <span class="story-badge-year">Presente</span>
                         <h3>Innovación y Salud Digital</h3>
-                        <p>Hoy incorporamos asistentes virtuales IA para agilizar tu atención, manteniendo intacta la calidez humana que nos ha caracterizado por más de 25 años.</p>
+                        <p>Hoy incorporamos asistentes virtuales IA para agilizar tu atención, manteniendo intacta la calidez humana de siempre.</p>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="story-controls">
-            <button class="btn-story-arrow" id="prevStoryBtn" aria-label="Historia anterior">
+            <button class="btn-story-arrow" id="prevStoryBtn" aria-label="Anterior">
                 <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
             </button>
-            
             <div class="story-timeline-indicators">
                 <button class="timeline-btn active" onclick="goToStory(0)">1995-1996</button>
                 <button class="timeline-btn" onclick="goToStory(1)">2010-2015</button>
                 <button class="timeline-btn" onclick="goToStory(2)">Presente</button>
             </div>
-
-            <button class="btn-story-arrow" id="nextStoryBtn" aria-label="Siguiente historia">
+            <button class="btn-story-arrow" id="nextStoryBtn" aria-label="Siguiente">
                 <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
             </button>
         </div>
-
     </section>
 
-    <!-- SECCIÓN 4: ORGANIGRAMA CON MOVIMIENTO FLUIDO Y ADAPTATIVO -->
+    <!-- ==================================================== -->
+    <!-- SECCIÓN 4: ORGANIGRAMA INTELIGENTE -->
+    <!-- ==================================================== -->
     <section class="section-organigrama" aria-label="Organigrama">
         <h2 class="org-title">Organigrama</h2>
 
-        <!-- Contenedor adaptativo de desplazamiento horizontal -->
-        <div class="org-scroll-wrapper">
+        <!-- 1. VISTA ESCRITORIO (Árbol horizontal amplio tradicional) -->
+        <div class="desktop-org">
             <div class="tree-container">
                 <ul>
                     <li>
@@ -1105,12 +1134,104 @@
                 </ul>
             </div>
         </div>
+
+        <!-- 2. VISTA MÓVIL (Cuadrícula vertical de 2 columnas hacia abajo) -->
+        <div class="mobile-org">
+            <!-- DIRECTOR GENERAL (Arriba centrado) -->
+            <div class="main-leader-wrapper">
+                <div class="node-card main-leader">
+                    <div class="node-photo-wrapper">
+                        <img src="edugibly.jpeg" alt="Eduardo García Harrison" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';">
+                        <div class="email-tooltip-card">
+                            <span class="email-label">Correo Institucional</span>
+                            <a href="mailto:eduardo.garcia@saludvital.com" class="email-text">eduardo.garcia@saludvital.com</a>
+                        </div>
+                    </div>
+                    <div class="node-name">GARCIA HARRISON EDUARDO</div>
+                    <div class="node-puesto-badge">Director General</div>
+                </div>
+            </div>
+
+            <!-- RESTO DEL EQUIPO ORGANIZADO EN 2 COLUMNAS VERTICALES -->
+            <div class="org-grid-2col">
+                <!-- Rama 1 -->
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="foto_carmen_barajas.jpg" alt="Barajas" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">BARAJAS GALICIA MARIA DEL CARMEN</div>
+                    <div class="node-puesto-badge">Coordinación Médica</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="kikegibly.jpeg" alt="Becerril" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">BECERRIL TELLEZ ABRAHAM ENRIQUE</div>
+                    <div class="node-puesto-badge">Médico Especialista</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="ismagibly.jpeg" alt="Flores" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">FLORES FLORES ANGEL ISMAEL</div>
+                    <div class="node-puesto-badge">Médico General</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="juan.jpeg" alt="Ocampo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">OCAMPO CASTILLO JUAN EDUARDO</div>
+                    <div class="node-puesto-badge">Atención Primaria</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="romangibly.jpeg" alt="Gutiérrez" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">GUTIERREZ OCAMPO ROMAN</div>
+                    <div class="node-puesto-badge">Jefe de Enfermería</div>
+                </div>
+
+                <!-- Rama 2 -->
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="asenetgibly.jpeg" alt="Azeneth" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">GARCIA GARCIA AZENETH</div>
+                    <div class="node-puesto-badge">Jefe de Administración</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="edergibly.jpeg" alt="Martínez" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">MARTINEZ SILVA EDER ALYARIMI</div>
+                    <div class="node-puesto-badge">Finanzas y Contabilidad</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="mafergibly.jpeg" alt="Velázquez" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">VELAZQUEZ MIRANDA MARIA FERNANDA</div>
+                    <div class="node-puesto-badge">Relaciones Públicas</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="erosgibly.jpeg" alt="Román" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">ROMAN TAPIA EROS RAMSES</div>
+                    <div class="node-puesto-badge">Logística y Suministros</div>
+                </div>
+
+                <!-- Rama 3 -->
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="marcusgibly.jpeg" alt="Hernández" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">HERNANDEZ OSTOS MARCOS ARIF</div>
+                    <div class="node-puesto-badge">Gestión de Operaciones</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="angelgibly.jpeg" alt="García" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">GARCIA NAJERA ANGEL EMILIANO</div>
+                    <div class="node-puesto-badge">Sistemas y Salud Digital</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="nikigibly.jpeg" alt="Giles" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">GILES CALVA NICOLAS</div>
+                    <div class="node-puesto-badge">Atención a Pacientes</div>
+                </div>
+                <div class="node-card">
+                    <div class="node-photo-wrapper"><img src="wissigibly.jpeg" alt="Joaquín" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80';"></div>
+                    <div class="node-name">JOAQUIN LANDA LUIS ARTURO</div>
+                    <div class="node-puesto-badge">Asistente Clínico</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-container">
-            <a href="index.html" class="brand-logo" aria-label="Ir al inicio desde pie de página" style="color: var(--white);">
+            <a href="index.html" class="brand-logo" aria-label="Ir al inicio" style="color: var(--white);">
                 <div class="brand-icon"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
                 <span class="brand-title">Salud<span style="color: var(--primary-light);">Vital</span></span>
             </a>
@@ -1118,7 +1239,7 @@
         </div>
     </footer>
 
-    <!-- LÓGICA INTERACTIVA SCROLLTELLING -->
+    <!-- JS INTERACTIVO -->
     <script>
         let currentStoryStep = 0;
         const totalSteps = 3;
