@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce la historia, misión, visión y equipo detrás de SaludVital. Más de 25 años al servicio de tu bienestar.">
+    <title>Nosotros - SaludVital Medicina General</title>
+    
+    <!-- Preload & Styles Optimization -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --primary-light: #ccfbf1;
+            --bg-light: #f0fdfa;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --white: #ffffff;
+            --accent: #f59e0b;
+            --accent-puesto: #d97706;
+            --email-color: #2563eb;
+            --line-color: #0d9488;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        html, body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & STICKY NAV */
+        .header-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--primary-light);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), #14b8a6);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .brand-title {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.025em;
+        }
+
+        .brand-title span {
+            color: var(--primary);
+        }
+
+        .brand-sub {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-top: -3px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 0.25rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link.active, .nav-link:hover {
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--primary-dark);
+        }
+
+        .btn-cta {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 0.65rem 1.25rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary);
+        }
+
+        /* SECCIÓN 1: ¿QUIÉNES SOMOS? */
+        .section-who {
+            max-width: 1100px;
+            margin: 3rem auto 2rem auto;
+            padding: 0 1.25rem;
+            text-align: center;
+        }
+
+        .who-badge-box {
+            display: inline-block;
+            border: 2px dashed var(--primary);
+            border-radius: 50px;
+            padding: 0.75rem 2.5rem;
+            background: rgba(13, 148, 136, 0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        .who-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+
+        .who-lead {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* SECCIÓN 2: MISIÓN, SONRISAS, VISIÓN Y VALORES CON MASCOTA IA */
+        .section-pillars {
+            max-width: 1200px;
+            margin: 2rem auto 4rem auto;
+            padding: 0 1.25rem;
+            position: relative;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .pillar-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pillar-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Núcleo Central: Sonrisas + Mascot IA Widget */
+        .center-core {
+            text-align: center;
+            position: relative;
+        }
+
+        .circle-smile {
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--white));
+            border: 4px solid var(--primary);
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(13, 148, 136, 0.15);
+        }
+
+        .ai-mascot-card {
+            position: absolute;
+            top: -20px;
+            right: -40px;
+            background: #ffffff;
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 0.85rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+            animation: floatMascot 4s ease-in-out infinite;
+            max-width: 220px;
+            text-align: left;
+            z-index: 5;
+        }
+
+        @keyframes floatMascot {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .mascot-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #fef3c7;
+            color: #d97706;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .mascot-text {
+            font-size: 0.75rem;
+            color: var(--text-main);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .mascot-badge {
+            font-size: 0.65rem;
+            background: #fef3c7;
+            color: #b45309;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 2px;
+        }
+
+        /* SECCIÓN 3: HISTORIA CON SCROLLTELLING HORIZONTAL (100vh) */
+        .story-viewport-section {
+            width: 100vw;
+            height: 100vh;
+            min-height: 650px;
+            background: #0f172a;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2rem 0;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+        }
+
+        .story-header {
+            text-align: center;
+            z-index: 2;
+            padding: 0 1.25rem;
+        }
+
+        .story-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .story-horizontal-track {
+            display: flex;
+            width: 300vw;
+            height: calc(100vh - 180px);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .story-step {
+            width: 100vw;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5vw;
+            flex-shrink: 0;
+        }
+
+        .story-content-grid {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .story-image-box {
+            position: relative;
+            height: 380px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .story-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .story-step:hover .story-image-box img {
+            transform: scale(1.03);
+        }
+
+        .story-badge-year {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 1rem;
+            display: inline-block;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.25rem;
+        }
+
+        .story-info h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .story-info p {
+            font-size: 1rem;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .story-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            z-index: 5;
+        }
+
+        .btn-story-arrow {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--white);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-story-arrow:hover {
+            background: var(--primary);
+        }
+
+        .story-timeline-indicators {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .timeline-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #94a3b8;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .timeline-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ==================================================== */
+        /* SECCIÓN 4: ORGANIGRAMA ESTRUCTURAL CON LÍNEAS (CSS) */
+        /* ==================================================== */
+        .section-organigrama {
+            width: 100%;
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+            text-align: center;
+            overflow-x: auto; /* Permite scroll horizontal en móviles si el árbol es ancho */
+        }
+
+        .org-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Estructura CSS del Árbol de Organigrama */
+        .tree-container {
+            display: inline-block;
+            min-width: 1000px;
+            padding: 20px;
+        }
+
+        .tree-container ul {
+            padding-top: 20px;
+            position: relative;
+            transition: all 0.5s;
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        .tree-container li {
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 8px 0 8px;
+            transition: all 0.5s;
+        }
+
+        /* Dibujo de líneas conectoras superiores */
+        .tree-container li::before, .tree-container li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            border-top: 2px solid var(--line-color);
+            width: 50%;
+            height: 20px;
+        }
+
+        .tree-container li::after {
+            right: auto;
+            left: 50%;
+            border-left: 2px solid var(--line-color);
+        }
+
+        .tree-container li:only-child::after, .tree-container li:only-child::before {
+            display: none;
+        }
+
+        .tree-container li:only-child {
+            padding-top: 0;
+        }
+
+        .tree-container li:first-child::before, .tree-container li:last-child::after {
+            border: none;
+        }
+
+        .tree-container li:last-child::before {
+            border-right: 2px solid var(--line-color);
+            border-radius: 0 10px 0 0;
+        }
+
+        .tree-container li:first-child::after {
+            border-radius: 10px 0 0 0;
+        }
+
+        .tree-container ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 2px solid var(--line-color);
+            width: 0;
+            height: 20px;
+        }
+
+        /* Tarjeta genérica de Nodo */
+        .node-card {
+            background: var(--white);
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 1rem 0.8rem;
+            display: inline-block;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            width: 190px;
+            z-index: 5;
+        }
+
+        .node-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(13, 148, 136, 0.15);
+            z-index: 30; /* Eleva la tarjeta para superponer el tooltip sobre otros nodos */
+        }
+
+        /* Nodo Principal (Director General) */
+        .node-card.main-leader {
+            border-color: var(--primary);
+            background: var(--white);
+            width: 240px;
+        }
+
+        /* Contenedor de Foto */
+        .node-photo-wrapper {
+            position: relative;
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 0.5rem auto;
+            cursor: pointer;
+        }
+
+        .node-card.main-leader .node-photo-wrapper {
+            width: 95px;
+            height: 95px;
+        }
+
+        .node-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--primary-light);
+            transition: transform 0.3s, border-color 0.3s;
+            background: #f1f5f9;
+        }
+
+        .node-photo-wrapper:hover img {
+            transform: scale(1.08);
+            border-color: var(--accent);
+        }
+
+        /* TARJETA / TOOLTIP FLOTANTE DE CORREO AL PASAR EL CURSOR (HOVER) */
+        .email-tooltip-card {
+            position: absolute;
+            left: 110%;
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: var(--white);
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            padding: 0.65rem 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 50;
+            text-align: left;
+        }
+
+        .email-tooltip-card::before {
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent var(--white) transparent transparent;
+        }
+
+        /* Mostrar Tooltip */
+        .node-photo-wrapper:hover .email-tooltip-card {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .email-tooltip-card .email-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .email-tooltip-card .email-text {
+            color: var(--email-color); /* Color distintivo del correo */
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .node-name {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+            line-height: 1.25;
+        }
+
+        .node-card.main-leader .node-name {
+            font-size: 1rem;
+        }
+
+        .node-puesto-badge {
+            background-color: var(--accent-puesto); /* Color distintivo del puesto */
+            color: var(--white);
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .node-card.main-leader .node-puesto-badge {
+            font-size: 0.78rem;
+            padding: 0.25rem 0.75rem;
+        }
+
+        /* FOOTER */
+        .site-footer {
+            background: #0f172a;
+            color: var(--white);
+            padding: 3rem 0 2rem 0;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            .ai-mascot-card {
+                position: static;
+                margin: 1rem auto 0 auto;
+            }
+            .story-content-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .story-image-box {
+                height: 220px;
+            }
+            .story-badge-year {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <header class="header-sticky">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo" aria-label="Volver a Inicio">
+                <div class="brand-icon"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></div>
+                <div>
+                    <span class="brand-title">Salud<span>Vital</span></span>
+                    <span class="brand-sub">Medicina General</span>
+                </div>
+            </a>
+
+            <nav aria-label="Navegación principal">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="nosotros.html" class="nav-link active">Nosotros</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <a href="index.html#contacto" class="btn-cta">
+                <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+                <span>Agendar Cita</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- SECCIÓN 1: ¿QUIÉNES SOMOS? -->
+    <section class="section-who">
+        <div class="who-badge-box">
+            <h1 class="who-title">¿Quiénes Somos?</h1>
+        </div>
+        <p class="who-lead">
+            Somos un consultorio médico dedicado a proporcionar atención primaria integral, humana y accesible. Nuestro compromiso es salvaguardar el bienestar de cada familia con calidez y precisión diagnóstica.
+        </p>
+    </section>
+
+    <!-- SECCIÓN 2: MISIÓN, SONRISAS, VISIÓN Y VALORES (+ MASCOTA IA) -->
+    <section class="section-pillars" aria-label="Misión, Visión y Valores">
+        <div class="pillars-grid">
+            
+            <!-- Bloque Izquierdo: Misión -->
+            <div class="pillar-card">
+                <h3><i class="fa-solid fa-bullseye" aria-hidden="true"></i> Misión</h3>
+                <p>Ofrecer servicios médicos generales con un estándar de excelencia, enfocado en la prevención, diagnóstico certero y acompañamiento empático de nuestros pacientes.</p>
+            </div>
+
+            <!-- Centro: Sonrisas + Mascota IA -->
+            <div class="center-core">
+                <div class="ai-mascot-card">
+                    <div class="mascot-avatar">
+                        <i class="fa-solid fa-robot" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <span class="mascot-badge"><i class="fa-solid fa-sparkles"></i> Asistente IA</span>
+                        <div class="mascot-text">"¡Hola! Soy Evee, tu guía de salud en el consultorio."</div>
+                    </div>
+                </div>
+
+                <div class="circle-smile">
+                    <img src="evee.png" alt="Evee, mascota virtual" 
+                         style="width: 200px; height: 250px; border-radius: 100%; object-fit: cover;">
+                </div>
+
+                <div class="pillar-card" style="text-align: left;">
+                    <h3><i class="fa-solid fa-gem" aria-hidden="true"></i> Valores</h3>
+                    <p>Empatía, ética profesional, innovación médica constante y respeto humano en cada consulta.</p>
+                </div>
+            </div>
+
+            <!-- Bloque Derecho: Visión -->
+            <div class="pillar-card">
+                <h3><i class="fa-solid fa-eye" aria-hidden="true"></i> Visión</h3>
+                <p>Ser el consultorio médico de referencia en la comunidad, reconocido por la transformación digital, el trato cálido y la tasa de satisfacción de nuestros pacientes.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: HISTORIA CON SCROLLTELLING Y TRANSICIONES (100vh Viewport) -->
+    <section class="story-viewport-section" aria-label="Nuestra Historia">
+        
+        <div class="story-header">
+            <h2>Nuestra Historia</h2>
+        </div>
+
+        <!-- Track Horizontal con Transiciones -->
+        <div class="story-horizontal-track" id="storyTrack">
+            
+            <!-- Etapa 1: 1995 - 1996 -->
+            <div class="story-step">
+                <div class="story-content-grid">
+                    <div class="story-image-box">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=75" alt="Fundación del consultorio 1995" loading="lazy">
+                    </div>
+                    <div class="story-info">
+                        <span class="story-badge-year">1995 - 1996</span>
+                        <h3>Los Primeros Pasos</h3>
+                        <p>Iniciamos operaciones como un pequeño consultorio local con la visión de acercar la medicina preventiva a todas las familias de la zona. Con un equipo de dos médicos dedicados, colocamos los cimientos de la confianza.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etapa 2: 2010 - Crecimiento -->
+            <div class="story-step">
+                <div class="story-content-grid">
+                    <div class="story-image-box">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=75" alt="Modernización del consultorio" loading="lazy">
+                    </div>
+                    <div class="story-info">
+                        <span class="story-badge-year">2010 - 2015</span>
+                        <h3>Expansión e Instalaciones</h3>
+                        <p>Ampliamos nuestras instalaciones integrando equipos diagnósticos de última generación y habilitando áreas dedicadas para chequeos preventivos y curaciones rápidas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etapa 3: Actualidad e Innovación IA -->
+            <div class="story-step">
+                <div class="story-content-grid">
+                    <div class="story-image-box">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=75" alt="Atención médica moderna" loading="lazy">
+                    </div>
+                    <div class="story-info">
+                        <span class="story-badge-year">Presente</span>
+                        <h3>Innovación y Salud Digital</h3>
+                        <p>Hoy incorporamos asistentes virtuales IA para agilizar tu atención, manteniendo intacta la calidez humana que nos ha caracterizado por más de 25 años.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Controles de la Historia -->
+        <div class="story-controls">
+            <button class="btn-story-arrow" id="prevStoryBtn" aria-label="Historia anterior">
+                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            
+            <div class="story-timeline-indicators">
+                <button class="timeline-btn active" onclick="goToStory(0)">1995-1996</button>
+                <button class="timeline-btn" onclick="goToStory(1)">2010-2015</button>
+                <button class="timeline-btn" onclick="goToStory(2)">Presente</button>
+            </div>
+
+            <button class="btn-story-arrow" id="nextStoryBtn" aria-label="Siguiente historia">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+
+    </section>
+
+    <!-- SECCIÓN 4: ORGANIGRAMA CON LÍNEAS DE CONEXIÓN Y HOVER EN TODOS LOS NODOS -->
+    <section class="section-organigrama" aria-label="Organigrama">
+        <h2 class="org-title">Organigrama</h2>
+
+        <div class="tree-container">
+            <ul>
+                <li>
+                    <!-- NODO NIVEL 1: DIRECTOR GENERAL (GARCIA HARRISON EDUARDO) -->
+                    <div class="node-card main-leader">
+                        <div class="node-photo-wrapper">
+                            <!-- ESPACIO PARA FOTO: reemplaza 'foto_eduardo.jpg' -->
+                            <img src="edugibly.jpeg" alt="Eduardo García Harrison" onerror="this.onerror=null; this.src='">
+                            <div class="email-tooltip-card">
+                                <span class="email-label">Correo Institucional</span>
+                                <a href="mailto:eduardo.garcia@saludvital.com" class="email-text">
+                                    <i class="fa-solid fa-envelope"></i> eduardo.garcia@saludvital.com
+                                </a>
+                            </div>
+                        </div>
+                        <div class="node-name">GARCIA HARRISON EDUARDO</div>
+                        <div class="node-puesto-badge">Director General</div>
+                    </div>
+
+                    <!-- NIVEL 2: DEPARTAMENTOS / ÁREAS LÍDERES -->
+                    <ul>
+                        <!-- RAMA 1: DIRECCIÓN MÉDICA Y CLÍNICA -->
+                        <li>
+                            <div class="node-card">
+                                <div class="node-photo-wrapper">
+                                    <!-- ESPACIO PARA FOTO -->
+                                    <img src="foto_carmen_barajas.jpg" alt="Barajas Galicia María del Carmen" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80';">
+                                    <div class="email-tooltip-card">
+                                        <span class="email-label">Correo Institucional</span>
+                                        <a href="mailto:carmen.barajas@saludvital.com" class="email-text">
+                                            <i class="fa-solid fa-envelope"></i> carmen.barajas@saludvital.com
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="node-name">BARAJAS GALICIA MARIA DEL CARMEN</div>
+                                <div class="node-puesto-badge">Coordinación Médica</div>
+                            </div>
+
+                            <!-- NIVEL 3: EQUIPO MÉDICO -->
+                            <ul>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="kikegibly.jpeg" alt="Becerril Tellez Abraham Enrique" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=8';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:abraham.becerril@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> abraham.becerril@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">BECERRIL TELLEZ ABRAHAM ENRIQUE</div>
+                                        <div class="node-puesto-badge">Médico Especialista</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="ismagibly.jpeg" alt="Flores Flores Angel Ismael" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:angel.flores@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> angel.flores@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">FLORES FLORES ANGEL ISMAEL</div>
+                                        <div class="node-puesto-badge">Médico General</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="juan.jpeg" alt="Ocampo Castillo Juan Eduardo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:juan.ocampo@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> juan.ocampo@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">OCAMPO CASTILLO JUAN EDUARDO</div>
+                                        <div class="node-puesto-badge">Atención Primaria</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="romangibly.jpeg" alt="Gutiérrez Ocampo Román" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:roman.gutierrez@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> roman.gutierrez@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">GUTIERREZ OCAMPO ROMAN</div>
+                                        <div class="node-puesto-badge">Jefe de Enfermería</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- RAMA 2: ADMINISTRACIÓN Y FINANZAS -->
+                        <li>
+                            <div class="node-card">
+                                <div class="node-photo-wrapper">
+                                    <!-- ESPACIO PARA FOTO -->
+                                    <img src="asenetgibly.jpeg" alt="García García Azeneth" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80';">
+                                    <div class="email-tooltip-card">
+                                        <span class="email-label">Correo Institucional</span>
+                                        <a href="mailto:azeneth.garcia@saludvital.com" class="email-text">
+                                            <i class="fa-solid fa-envelope"></i> azeneth.garcia@saludvital.com
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="node-name">GARCIA GARCIA AZENETH</div>
+                                <div class="node-puesto-badge">Jefe de Administración</div>
+                            </div>
+
+                            <!-- NIVEL 3: EQUIPO ADMINISTRATIVO -->
+                            <ul>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="edergibly.jpeg" alt="Martínez Silva Eder Alyarimi" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:eder.martinez@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> eder.martinez@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">MARTINEZ SILVA EDER ALYARIMI</div>
+                                        <div class="node-puesto-badge">Finanzas y Contabilidad</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="mafergibly.jpeg" alt="Velázquez Miranda María Fernanda" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:fernanda.velazquez@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> fernanda.velazquez@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">VELAZQUEZ MIRANDA MARIA FERNANDA</div>
+                                        <div class="node-puesto-badge">Relaciones Públicas</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="erosgibly.jpeg" alt="Román Tapia Eros Ramsés" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:eros.roman@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> eros.roman@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">ROMAN TAPIA EROS RAMSES</div>
+                                        <div class="node-puesto-badge">Logística y Suministros</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- RAMA 3: OPERACIONES, SISTEMAS Y ATENCIÓN -->
+                        <li>
+                            <div class="node-card">
+                                <div class="node-photo-wrapper">
+                                    <!-- ESPACIO PARA FOTO -->
+                                    <img src="marcusgibly.jpeg" alt="Hernández Ostos Marcos Arif" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80';">
+                                    <div class="email-tooltip-card">
+                                        <span class="email-label">Correo Institucional</span>
+                                        <a href="mailto:marcos.hernandez@saludvital.com" class="email-text">
+                                            <i class="fa-solid fa-envelope"></i> marcos.hernandez@saludvital.com
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="node-name">HERNANDEZ OSTOS MARCOS ARIF</div>
+                                <div class="node-puesto-badge">Gestión de Operaciones</div>
+                            </div>
+
+                            <!-- NIVEL 3: SISTEMAS Y SOPORTE -->
+                            <ul>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="angelgibly.jpeg" alt="García Nájera Angel Emiliano" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:angel.garcia@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> angel.garcia@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">GARCIA NAJERA ANGEL EMILIANO</div>
+                                        <div class="node-puesto-badge">Sistemas y Salud Digital</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="nikigibly.jpeg" alt="Giles Calva Nicolás" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:nicolas.giles@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> nicolas.giles@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">GILES CALVA NICOLAS</div>
+                                        <div class="node-puesto-badge">Atención a Pacientes</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="node-card">
+                                        <div class="node-photo-wrapper">
+                                            <!-- ESPACIO PARA FOTO -->
+                                            <img src="wissigibly.jpeg" alt="Joaquín Landa Luis Arturo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80';">
+                                            <div class="email-tooltip-card">
+                                                <span class="email-label">Correo Institucional</span>
+                                                <a href="mailto:luis.joaquin@saludvital.com" class="email-text">
+                                                    <i class="fa-solid fa-envelope"></i> luis.joaquin@saludvital.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="node-name">JOAQUIN LANDA LUIS ARTURO</div>
+                                        <div class="node-puesto-badge">Asistente Clínico</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <a href="index.html" class="brand-logo" style="color: var(--white);">
+                <div class="brand-icon"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
+                <span class="brand-title">Salud<span style="color: var(--primary-light);">Vital</span></span>
+            </a>
+            <p style="font-size: 0.85rem; color: #94a3b8;">&copy; 2026 SaludVital Consultorio Médico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- LÓGICA INTERACTIVA SCROLLTELLING -->
+    <script>
+        let currentStoryStep = 0;
+        const totalSteps = 3;
+        const track = document.getElementById('storyTrack');
+        const timelineBtns = document.querySelectorAll('.timeline-btn');
+
+        function updateStoryPosition(index) {
+            currentStoryStep = index;
+            track.style.transform = `translateX(-${index * 100}vw)`;
+            
+            timelineBtns.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+        }
+
+        function goToStory(index) {
+            updateStoryPosition(index);
+        }
+
+        document.getElementById('nextStoryBtn').addEventListener('click', () => {
+            const next = (currentStoryStep + 1) % totalSteps;
+            updateStoryPosition(next);
+        });
+
+        document.getElementById('prevStoryBtn').addEventListener('click', () => {
+            const prev = (currentStoryStep - 1 + totalSteps) % totalSteps;
+            updateStoryPosition(prev);
+        });
+    </script>
+</body>
+</html>
