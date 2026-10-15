@@ -21,11 +21,11 @@
             --primary-light: #ccfbf1;
             --bg-light: #f0fdfa;
             --text-main: #0f172a;
-            --text-muted: #475569;
+            --text-muted: #1e293b;
             --white: #ffffff;
-            --accent: #f59e0b;
-            --accent-puesto: #d97706;
-            --email-color: #2563eb;
+            --accent: #d97706;
+            --accent-puesto: #b45309;
+            --email-color: #1d4ed8;
             --line-color: #0d9488;
         }
 
@@ -91,11 +91,11 @@
         }
 
         .brand-title span {
-            color: var(--primary);
+            color: var(--primary-dark);
         }
 
         .brand-sub {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--primary-dark);
             text-transform: uppercase;
@@ -192,7 +192,7 @@
             background: var(--white);
             padding: 2rem;
             border-radius: 20px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1;
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03);
             transition: transform 0.3s;
         }
@@ -216,7 +216,6 @@
             color: var(--text-muted);
         }
 
-        /* Núcleo Central: Sonrisas + Mascot IA Widget */
         .center-core {
             text-align: center;
             position: relative;
@@ -264,7 +263,7 @@
             height: 44px;
             border-radius: 50%;
             background: #fef3c7;
-            color: #d97706;
+            color: #b45309;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -273,23 +272,24 @@
         }
 
         .mascot-text {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-main);
             font-weight: 700;
             line-height: 1.2;
         }
 
         .mascot-badge {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             background: #fef3c7;
             color: #b45309;
             padding: 2px 6px;
             border-radius: 4px;
             display: inline-block;
             margin-bottom: 2px;
+            font-weight: 700;
         }
 
-        /* SECCIÓN 3: HISTORIA CON SCROLLTELLING HORIZONTAL (100vh) */
+        /* SECCIÓN 3: HISTORIA */
         .story-viewport-section {
             width: 100vw;
             height: 100vh;
@@ -369,7 +369,7 @@
         .story-badge-year {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--primary-light);
             line-height: 1;
             margin-bottom: 1rem;
             display: inline-block;
@@ -386,7 +386,7 @@
 
         .story-info p {
             font-size: 1rem;
-            color: #94a3b8;
+            color: #cbd5e1;
             line-height: 1.7;
         }
 
@@ -424,7 +424,7 @@
         .timeline-btn {
             background: rgba(255,255,255,0.2);
             border: none;
-            color: #94a3b8;
+            color: #cbd5e1;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-weight: 700;
@@ -438,16 +438,13 @@
             color: var(--white);
         }
 
-        /* ==================================================== */
-        /* SECCIÓN 4: ORGANIGRAMA ESTRUCTURAL CON LÍNEAS (CSS) */
-        /* ==================================================== */
+        /* SECCIÓN 4: ORGANIGRAMA ADAPTATIVO Y MOVIMIENTO FLUIDO */
         .section-organigrama {
             width: 100%;
             max-width: 1300px;
             margin: 4rem auto;
             padding: 0 1rem;
             text-align: center;
-            overflow-x: auto; /* Permite scroll horizontal en móviles si el árbol es ancho */
         }
 
         .org-title {
@@ -457,10 +454,32 @@
             margin-bottom: 2.5rem;
         }
 
-        /* Estructura CSS del Árbol de Organigrama */
+        /* Contenedor adaptativo con scroll horizontal nativo y suave fluido */
+        .org-scroll-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 1.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) #e2e8f0;
+        }
+
+        .org-scroll-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .org-scroll-wrapper::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .org-scroll-wrapper::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
         .tree-container {
             display: inline-block;
-            min-width: 1000px;
+            min-width: 1100px;
             padding: 20px;
         }
 
@@ -481,7 +500,6 @@
             transition: all 0.5s;
         }
 
-        /* Dibujo de líneas conectoras superiores */
         .tree-container li::before, .tree-container li::after {
             content: '';
             position: absolute;
@@ -529,10 +547,9 @@
             height: 20px;
         }
 
-        /* Tarjeta genérica de Nodo */
         .node-card {
             background: var(--white);
-            border: 2px solid #cbd5e1;
+            border: 2px solid #94a3b8;
             border-radius: 16px;
             padding: 1rem 0.8rem;
             display: inline-block;
@@ -547,17 +564,15 @@
             border-color: var(--primary);
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(13, 148, 136, 0.15);
-            z-index: 30; /* Eleva la tarjeta para superponer el tooltip sobre otros nodos */
+            z-index: 30;
         }
 
-        /* Nodo Principal (Director General) */
         .node-card.main-leader {
             border-color: var(--primary);
             background: var(--white);
             width: 240px;
         }
 
-        /* Contenedor de Foto */
         .node-photo-wrapper {
             position: relative;
             width: 75px;
@@ -586,14 +601,13 @@
             border-color: var(--accent);
         }
 
-        /* TARJETA / TOOLTIP FLOTANTE DE CORREO AL PASAR EL CURSOR (HOVER) */
         .email-tooltip-card {
             position: absolute;
             left: 110%;
             top: 50%;
             transform: translateY(-50%) translateX(-10px);
             background: var(--white);
-            border: 1px solid #cbd5e1;
+            border: 1px solid #94a3b8;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             border-radius: 12px;
             padding: 0.65rem 0.85rem;
@@ -617,7 +631,6 @@
             border-color: transparent var(--white) transparent transparent;
         }
 
-        /* Mostrar Tooltip */
         .node-photo-wrapper:hover .email-tooltip-card {
             opacity: 1;
             visibility: visible;
@@ -625,7 +638,7 @@
         }
 
         .email-tooltip-card .email-label {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             font-weight: 700;
             text-transform: uppercase;
@@ -634,8 +647,8 @@
         }
 
         .email-tooltip-card .email-text {
-            color: var(--email-color); /* Color distintivo del correo */
-            font-size: 0.82rem;
+            color: var(--email-color);
+            font-size: 0.85rem;
             font-weight: 700;
             text-decoration: none;
             display: flex;
@@ -644,7 +657,7 @@
         }
 
         .node-name {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 800;
             color: var(--text-main);
             margin-bottom: 0.3rem;
@@ -656,19 +669,19 @@
         }
 
         .node-puesto-badge {
-            background-color: var(--accent-puesto); /* Color distintivo del puesto */
+            background-color: #9a3412;
             color: var(--white);
-            padding: 0.2rem 0.5rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 12px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             display: inline-block;
             line-height: 1.2;
         }
 
         .node-card.main-leader .node-puesto-badge {
-            font-size: 0.78rem;
-            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.75rem;
         }
 
         /* FOOTER */
@@ -690,7 +703,6 @@
             gap: 1.5rem;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 992px) {
             .pillars-grid {
                 grid-template-columns: 1fr;
@@ -717,7 +729,7 @@
     <!-- NAV BAR -->
     <header class="header-sticky">
         <div class="nav-container">
-            <a href="index.html" class="brand-logo" aria-label="Volver a Inicio">
+            <a href="index.html" class="brand-logo" aria-label="Volver a Inicio de SaludVital">
                 <div class="brand-icon"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></div>
                 <div>
                     <span class="brand-title">Salud<span>Vital</span></span>
@@ -755,20 +767,18 @@
     <section class="section-pillars" aria-label="Misión, Visión y Valores">
         <div class="pillars-grid">
             
-            <!-- Bloque Izquierdo: Misión -->
             <div class="pillar-card">
                 <h3><i class="fa-solid fa-bullseye" aria-hidden="true"></i> Misión</h3>
                 <p>Ofrecer servicios médicos generales con un estándar de excelencia, enfocado en la prevención, diagnóstico certero y acompañamiento empático de nuestros pacientes.</p>
             </div>
 
-            <!-- Centro: Sonrisas + Mascota IA -->
             <div class="center-core">
                 <div class="ai-mascot-card">
                     <div class="mascot-avatar">
                         <i class="fa-solid fa-robot" aria-hidden="true"></i>
                     </div>
                     <div>
-                        <span class="mascot-badge"><i class="fa-solid fa-sparkles"></i> Asistente IA</span>
+                        <span class="mascot-badge"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> Asistente IA</span>
                         <div class="mascot-text">"¡Hola! Soy Evee, tu guía de salud en el consultorio."</div>
                     </div>
                 </div>
@@ -784,7 +794,6 @@
                 </div>
             </div>
 
-            <!-- Bloque Derecho: Visión -->
             <div class="pillar-card">
                 <h3><i class="fa-solid fa-eye" aria-hidden="true"></i> Visión</h3>
                 <p>Ser el consultorio médico de referencia en la comunidad, reconocido por la transformación digital, el trato cálido y la tasa de satisfacción de nuestros pacientes.</p>
@@ -793,17 +802,15 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 3: HISTORIA CON SCROLLTELLING Y TRANSICIONES (100vh Viewport) -->
+    <!-- SECCIÓN 3: HISTORIA -->
     <section class="story-viewport-section" aria-label="Nuestra Historia">
         
         <div class="story-header">
             <h2>Nuestra Historia</h2>
         </div>
 
-        <!-- Track Horizontal con Transiciones -->
         <div class="story-horizontal-track" id="storyTrack">
             
-            <!-- Etapa 1: 1995 - 1996 -->
             <div class="story-step">
                 <div class="story-content-grid">
                     <div class="story-image-box">
@@ -817,7 +824,6 @@
                 </div>
             </div>
 
-            <!-- Etapa 2: 2010 - Crecimiento -->
             <div class="story-step">
                 <div class="story-content-grid">
                     <div class="story-image-box">
@@ -831,7 +837,6 @@
                 </div>
             </div>
 
-            <!-- Etapa 3: Actualidad e Innovación IA -->
             <div class="story-step">
                 <div class="story-content-grid">
                     <div class="story-image-box">
@@ -847,7 +852,6 @@
 
         </div>
 
-        <!-- Controles de la Historia -->
         <div class="story-controls">
             <button class="btn-story-arrow" id="prevStoryBtn" aria-label="Historia anterior">
                 <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
@@ -866,270 +870,251 @@
 
     </section>
 
-    <!-- SECCIÓN 4: ORGANIGRAMA CON LÍNEAS DE CONEXIÓN Y HOVER EN TODOS LOS NODOS -->
+    <!-- SECCIÓN 4: ORGANIGRAMA CON MOVIMIENTO FLUIDO Y ADAPTATIVO -->
     <section class="section-organigrama" aria-label="Organigrama">
         <h2 class="org-title">Organigrama</h2>
 
-        <div class="tree-container">
-            <ul>
-                <li>
-                    <!-- NODO NIVEL 1: DIRECTOR GENERAL (GARCIA HARRISON EDUARDO) -->
-                    <div class="node-card main-leader">
-                        <div class="node-photo-wrapper">
-                            <!-- ESPACIO PARA FOTO: reemplaza 'foto_eduardo.jpg' -->
-                            <img src="edugibly.jpeg" alt="Eduardo García Harrison" onerror="this.onerror=null; this.src='">
-                            <div class="email-tooltip-card">
-                                <span class="email-label">Correo Institucional</span>
-                                <a href="mailto:eduardo.garcia@saludvital.com" class="email-text">
-                                    <i class="fa-solid fa-envelope"></i> eduardo.garcia@saludvital.com
-                                </a>
+        <!-- Contenedor adaptativo de desplazamiento horizontal -->
+        <div class="org-scroll-wrapper">
+            <div class="tree-container">
+                <ul>
+                    <li>
+                        <div class="node-card main-leader">
+                            <div class="node-photo-wrapper">
+                                <img src="edugibly.jpeg" alt="Eduardo García Harrison" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';">
+                                <div class="email-tooltip-card">
+                                    <span class="email-label">Correo Institucional</span>
+                                    <a href="mailto:eduardo.garcia@saludvital.com" class="email-text">
+                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> eduardo.garcia@saludvital.com
+                                    </a>
+                                </div>
                             </div>
+                            <div class="node-name">GARCIA HARRISON EDUARDO</div>
+                            <div class="node-puesto-badge">Director General</div>
                         </div>
-                        <div class="node-name">GARCIA HARRISON EDUARDO</div>
-                        <div class="node-puesto-badge">Director General</div>
-                    </div>
 
-                    <!-- NIVEL 2: DEPARTAMENTOS / ÁREAS LÍDERES -->
-                    <ul>
-                        <!-- RAMA 1: DIRECCIÓN MÉDICA Y CLÍNICA -->
-                        <li>
-                            <div class="node-card">
-                                <div class="node-photo-wrapper">
-                                    <!-- ESPACIO PARA FOTO -->
-                                    <img src="foto_carmen_barajas.jpg" alt="Barajas Galicia María del Carmen" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80';">
-                                    <div class="email-tooltip-card">
-                                        <span class="email-label">Correo Institucional</span>
-                                        <a href="mailto:carmen.barajas@saludvital.com" class="email-text">
-                                            <i class="fa-solid fa-envelope"></i> carmen.barajas@saludvital.com
-                                        </a>
+                        <ul>
+                            <li>
+                                <div class="node-card">
+                                    <div class="node-photo-wrapper">
+                                        <img src="foto_carmen_barajas.jpg" alt="Barajas Galicia María del Carmen" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80';">
+                                        <div class="email-tooltip-card">
+                                            <span class="email-label">Correo Institucional</span>
+                                            <a href="mailto:carmen.barajas@saludvital.com" class="email-text">
+                                                <i class="fa-solid fa-envelope" aria-hidden="true"></i> carmen.barajas@saludvital.com
+                                            </a>
+                                        </div>
                                     </div>
+                                    <div class="node-name">BARAJAS GALICIA MARIA DEL CARMEN</div>
+                                    <div class="node-puesto-badge">Coordinación Médica</div>
                                 </div>
-                                <div class="node-name">BARAJAS GALICIA MARIA DEL CARMEN</div>
-                                <div class="node-puesto-badge">Coordinación Médica</div>
-                            </div>
 
-                            <!-- NIVEL 3: EQUIPO MÉDICO -->
-                            <ul>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="kikegibly.jpeg" alt="Becerril Tellez Abraham Enrique" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=8';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:abraham.becerril@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> abraham.becerril@saludvital.com
-                                                </a>
+                                <ul>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="kikegibly.jpeg" alt="Becerril Tellez Abraham Enrique" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:abraham.becerril@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> abraham.becerril@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">BECERRIL TELLEZ ABRAHAM ENRIQUE</div>
+                                            <div class="node-puesto-badge">Médico Especialista</div>
                                         </div>
-                                        <div class="node-name">BECERRIL TELLEZ ABRAHAM ENRIQUE</div>
-                                        <div class="node-puesto-badge">Médico Especialista</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="ismagibly.jpeg" alt="Flores Flores Angel Ismael" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:angel.flores@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> angel.flores@saludvital.com
-                                                </a>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="ismagibly.jpeg" alt="Flores Flores Angel Ismael" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:angel.flores@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> angel.flores@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">FLORES FLORES ANGEL ISMAEL</div>
+                                            <div class="node-puesto-badge">Médico General</div>
                                         </div>
-                                        <div class="node-name">FLORES FLORES ANGEL ISMAEL</div>
-                                        <div class="node-puesto-badge">Médico General</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="juan.jpeg" alt="Ocampo Castillo Juan Eduardo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:juan.ocampo@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> juan.ocampo@saludvital.com
-                                                </a>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="juan.jpeg" alt="Ocampo Castillo Juan Eduardo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:juan.ocampo@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> juan.ocampo@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">OCAMPO CASTILLO JUAN EDUARDO</div>
+                                            <div class="node-puesto-badge">Atención Primaria</div>
                                         </div>
-                                        <div class="node-name">OCAMPO CASTILLO JUAN EDUARDO</div>
-                                        <div class="node-puesto-badge">Atención Primaria</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="romangibly.jpeg" alt="Gutiérrez Ocampo Román" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:roman.gutierrez@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> roman.gutierrez@saludvital.com
-                                                </a>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="romangibly.jpeg" alt="Gutiérrez Ocampo Román" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:roman.gutierrez@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> roman.gutierrez@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">GUTIERREZ OCAMPO ROMAN</div>
+                                            <div class="node-puesto-badge">Jefe de Enfermería</div>
                                         </div>
-                                        <div class="node-name">GUTIERREZ OCAMPO ROMAN</div>
-                                        <div class="node-puesto-badge">Jefe de Enfermería</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                                    </li>
+                                </ul>
+                            </li>
 
-                        <!-- RAMA 2: ADMINISTRACIÓN Y FINANZAS -->
-                        <li>
-                            <div class="node-card">
-                                <div class="node-photo-wrapper">
-                                    <!-- ESPACIO PARA FOTO -->
-                                    <img src="asenetgibly.jpeg" alt="García García Azeneth" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80';">
-                                    <div class="email-tooltip-card">
-                                        <span class="email-label">Correo Institucional</span>
-                                        <a href="mailto:azeneth.garcia@saludvital.com" class="email-text">
-                                            <i class="fa-solid fa-envelope"></i> azeneth.garcia@saludvital.com
-                                        </a>
+                            <li>
+                                <div class="node-card">
+                                    <div class="node-photo-wrapper">
+                                        <img src="asenetgibly.jpeg" alt="García García Azeneth" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80';">
+                                        <div class="email-tooltip-card">
+                                            <span class="email-label">Correo Institucional</span>
+                                            <a href="mailto:azeneth.garcia@saludvital.com" class="email-text">
+                                                <i class="fa-solid fa-envelope" aria-hidden="true"></i> azeneth.garcia@saludvital.com
+                                            </a>
+                                        </div>
                                     </div>
+                                    <div class="node-name">GARCIA GARCIA AZENETH</div>
+                                    <div class="node-puesto-badge">Jefe de Administración</div>
                                 </div>
-                                <div class="node-name">GARCIA GARCIA AZENETH</div>
-                                <div class="node-puesto-badge">Jefe de Administración</div>
-                            </div>
 
-                            <!-- NIVEL 3: EQUIPO ADMINISTRATIVO -->
-                            <ul>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="edergibly.jpeg" alt="Martínez Silva Eder Alyarimi" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:eder.martinez@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> eder.martinez@saludvital.com
-                                                </a>
+                                <ul>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="edergibly.jpeg" alt="Martínez Silva Eder Alyarimi" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:eder.martinez@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> eder.martinez@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">MARTINEZ SILVA EDER ALYARIMI</div>
+                                            <div class="node-puesto-badge">Finanzas y Contabilidad</div>
                                         </div>
-                                        <div class="node-name">MARTINEZ SILVA EDER ALYARIMI</div>
-                                        <div class="node-puesto-badge">Finanzas y Contabilidad</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="mafergibly.jpeg" alt="Velázquez Miranda María Fernanda" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:fernanda.velazquez@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> fernanda.velazquez@saludvital.com
-                                                </a>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="mafergibly.jpeg" alt="Velázquez Miranda María Fernanda" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:fernanda.velazquez@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> fernanda.velazquez@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">VELAZQUEZ MIRANDA MARIA FERNANDA</div>
+                                            <div class="node-puesto-badge">Relaciones Públicas</div>
                                         </div>
-                                        <div class="node-name">VELAZQUEZ MIRANDA MARIA FERNANDA</div>
-                                        <div class="node-puesto-badge">Relaciones Públicas</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="erosgibly.jpeg" alt="Román Tapia Eros Ramsés" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:eros.roman@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> eros.roman@saludvital.com
-                                                </a>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="erosgibly.jpeg" alt="Román Tapia Eros Ramsés" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:eros.roman@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> eros.roman@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">ROMAN TAPIA EROS RAMSES</div>
+                                            <div class="node-puesto-badge">Logística y Suministros</div>
                                         </div>
-                                        <div class="node-name">ROMAN TAPIA EROS RAMSES</div>
-                                        <div class="node-puesto-badge">Logística y Suministros</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                                    </li>
+                                </ul>
+                            </li>
 
-                        <!-- RAMA 3: OPERACIONES, SISTEMAS Y ATENCIÓN -->
-                        <li>
-                            <div class="node-card">
-                                <div class="node-photo-wrapper">
-                                    <!-- ESPACIO PARA FOTO -->
-                                    <img src="marcusgibly.jpeg" alt="Hernández Ostos Marcos Arif" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80';">
-                                    <div class="email-tooltip-card">
-                                        <span class="email-label">Correo Institucional</span>
-                                        <a href="mailto:marcos.hernandez@saludvital.com" class="email-text">
-                                            <i class="fa-solid fa-envelope"></i> marcos.hernandez@saludvital.com
-                                        </a>
+                            <li>
+                                <div class="node-card">
+                                    <div class="node-photo-wrapper">
+                                        <img src="marcusgibly.jpeg" alt="Hernández Ostos Marcos Arif" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80';">
+                                        <div class="email-tooltip-card">
+                                            <span class="email-label">Correo Institucional</span>
+                                            <a href="mailto:marcos.hernandez@saludvital.com" class="email-text">
+                                                <i class="fa-solid fa-envelope" aria-hidden="true"></i> marcos.hernandez@saludvital.com
+                                            </a>
+                                        </div>
                                     </div>
+                                    <div class="node-name">HERNANDEZ OSTOS MARCOS ARIF</div>
+                                    <div class="node-puesto-badge">Gestión de Operaciones</div>
                                 </div>
-                                <div class="node-name">HERNANDEZ OSTOS MARCOS ARIF</div>
-                                <div class="node-puesto-badge">Gestión de Operaciones</div>
-                            </div>
 
-                            <!-- NIVEL 3: SISTEMAS Y SOPORTE -->
-                            <ul>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="angelgibly.jpeg" alt="García Nájera Angel Emiliano" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:angel.garcia@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> angel.garcia@saludvital.com
-                                                </a>
+                                <ul>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="angelgibly.jpeg" alt="García Nájera Angel Emiliano" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:angel.garcia@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> angel.garcia@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">GARCIA NAJERA ANGEL EMILIANO</div>
+                                            <div class="node-puesto-badge">Sistemas y Salud Digital</div>
                                         </div>
-                                        <div class="node-name">GARCIA NAJERA ANGEL EMILIANO</div>
-                                        <div class="node-puesto-badge">Sistemas y Salud Digital</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="nikigibly.jpeg" alt="Giles Calva Nicolás" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:nicolas.giles@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> nicolas.giles@saludvital.com
-                                                </a>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="nikigibly.jpeg" alt="Giles Calva Nicolás" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:nicolas.giles@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> nicolas.giles@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">GILES CALVA NICOLAS</div>
+                                            <div class="node-puesto-badge">Atención a Pacientes</div>
                                         </div>
-                                        <div class="node-name">GILES CALVA NICOLAS</div>
-                                        <div class="node-puesto-badge">Atención a Pacientes</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="node-card">
-                                        <div class="node-photo-wrapper">
-                                            <!-- ESPACIO PARA FOTO -->
-                                            <img src="wissigibly.jpeg" alt="Joaquín Landa Luis Arturo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80';">
-                                            <div class="email-tooltip-card">
-                                                <span class="email-label">Correo Institucional</span>
-                                                <a href="mailto:luis.joaquin@saludvital.com" class="email-text">
-                                                    <i class="fa-solid fa-envelope"></i> luis.joaquin@saludvital.com
-                                                </a>
+                                    </li>
+                                    <li>
+                                        <div class="node-card">
+                                            <div class="node-photo-wrapper">
+                                                <img src="wissigibly.jpeg" alt="Joaquín Landa Luis Arturo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80';">
+                                                <div class="email-tooltip-card">
+                                                    <span class="email-label">Correo Institucional</span>
+                                                    <a href="mailto:luis.joaquin@saludvital.com" class="email-text">
+                                                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> luis.joaquin@saludvital.com
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <div class="node-name">JOAQUIN LANDA LUIS ARTURO</div>
+                                            <div class="node-puesto-badge">Asistente Clínico</div>
                                         </div>
-                                        <div class="node-name">JOAQUIN LANDA LUIS ARTURO</div>
-                                        <div class="node-puesto-badge">Asistente Clínico</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-container">
-            <a href="index.html" class="brand-logo" style="color: var(--white);">
+            <a href="index.html" class="brand-logo" aria-label="Ir al inicio desde pie de página" style="color: var(--white);">
                 <div class="brand-icon"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
                 <span class="brand-title">Salud<span style="color: var(--primary-light);">Vital</span></span>
             </a>
-            <p style="font-size: 0.85rem; color: #94a3b8;">&copy; 2026 SaludVital Consultorio Médico. Todos los derechos reservados.</p>
+            <p style="font-size: 0.85rem; color: #cbd5e1;">&copy; 2026 SaludVital Consultorio Médico. Todos los derechos reservados.</p>
         </div>
     </footer>
 

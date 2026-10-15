@@ -25,7 +25,8 @@
             --primary-light: #ccfbf1;
             --bg-light: #f0fdfa;
             --text-main: #0f172a;
-            --text-muted: #475569;
+            /* SE CORRIGIÓ EL CONTRASTE: Oscurecido para cumplir con estándares WCAG */
+            --text-muted: #1e293b;
             --white: #ffffff;
         }
 
@@ -97,11 +98,11 @@
         }
 
         .brand-title span {
-            color: var(--primary);
+            color: var(--primary-dark); /* Oscurecido para contraste */
         }
 
         .brand-sub {
-            font-size: 0.65rem;
+            font-size: 0.75rem; /* Aumentado para evitar alerta de texto muy pequeño */
             font-weight: 700;
             color: var(--primary-dark);
             text-transform: uppercase;
@@ -472,7 +473,7 @@
         }
 
         .badge {
-            font-size: 0.75rem;
+            font-size: 0.8rem; /* Aumentado para evitar texto muy pequeño */
             font-weight: 800;
             color: var(--primary-dark);
             text-transform: uppercase;
@@ -540,7 +541,7 @@
         }
 
         .footer-col h3 {
-            font-size: 0.85rem;
+            font-size: 0.9rem; /* Aumentado para evitar texto muy pequeño */
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -592,7 +593,7 @@
             border-top: 1px solid #1e293b;
             text-align: center;
             font-size: 0.85rem;
-            color: #64748b;
+            color: #94a3b8; /* Contraste mejorado */
         }
 
         /* RESPONSIVE DESIGN */
@@ -703,7 +704,7 @@
         </div>
     </aside>
 
-    <!-- CARRUSEL HERO DE ANCHO COMPLETO (FULL WIDTH 100%) -->
+    <!-- CARRUSEL HERO DE ANCHO COMPLETO -->
     <section id="inicio" class="hero-section" aria-label="Galería del consultorio">
         <div class="slider-container">
             
@@ -752,7 +753,7 @@
     </section>
 
     <!-- TARJETAS DESTACADAS -->
-    <section class="section-cards">
+    <section class="section-cards" aria-label="Características principales">
         <div class="cards-grid">
             <article class="card-item">
                 <div class="card-icon"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i></div>
@@ -787,28 +788,28 @@
                         <i class="fa-solid fa-circle-check service-check" aria-hidden="true"></i>
                         <div>
                             <strong>Consulta médica general:</strong>
-                            <p style="font-size: 0.9rem; color: var(--text-muted);">Para adultos y niños a partir de los 5 años.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Para adultos y niños a partir de los 5 años.</p>
                         </div>
                     </li>
                     <li class="service-item">
                         <i class="fa-solid fa-circle-check service-check" aria-hidden="true"></i>
                         <div>
                             <strong>Certificados médicos:</strong>
-                            <p style="font-size: 0.9rem; color: var(--text-muted);">Escolares, laborales o de aptitud física.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Escolares, laborales o de aptitud física.</p>
                         </div>
                     </li>
                     <li class="service-item">
                         <i class="fa-solid fa-circle-check service-check" aria-hidden="true"></i>
                         <div>
                             <strong>Toma de signos vitales:</strong>
-                            <p style="font-size: 0.9rem; color: var(--text-muted);">Presión arterial, glucemia capilar y oximetría.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Presión arterial, glucemia capilar y oximetría.</p>
                         </div>
                     </li>
                     <li class="service-item">
                         <i class="fa-solid fa-circle-check service-check" aria-hidden="true"></i>
                         <div>
                             <strong>Curaciones menores:</strong>
-                            <p style="font-size: 0.9rem; color: var(--text-muted);">Tratamiento de heridas leves y suturas.</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Tratamiento de heridas leves y suturas.</p>
                         </div>
                     </li>
                 </ul>
@@ -816,7 +817,7 @@
 
             <div class="hours-box">
                 <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;"><i class="fa-regular fa-clock" aria-hidden="true"></i> Horarios de Atención</h3>
-                <p style="font-size: 0.85rem; color: var(--primary-light); margin-bottom: 1.5rem;">Atención profesional en los siguientes turnos:</p>
+                <p style="font-size: 0.9rem; color: var(--primary-light); margin-bottom: 1.5rem;">Atención profesional en los siguientes turnos:</p>
                 
                 <div class="hours-row">
                     <span>Lunes a Viernes:</span>
@@ -840,11 +841,11 @@
         <div class="footer-container">
             
             <div>
-                <a href="#inicio" class="brand-logo" style="color: var(--white); margin-bottom: 1rem;">
+                <a href="#inicio" class="brand-logo" style="color: var(--white); margin-bottom: 1rem;" aria-label="Ir al inicio desde pie de página">
                     <div class="brand-icon"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
                     <span class="brand-title">Salud<span style="color: var(--primary-light);">Vital</span></span>
                 </a>
-                <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+                <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
                     Consultorio de Medicina General enfocado en brindar una atención accesible y de alta calidad para toda la comunidad.
                 </p>
             </div>
